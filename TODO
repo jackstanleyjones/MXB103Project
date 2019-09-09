@@ -1,0 +1,17 @@
+-Decide upon a Method
+-Adapt chosen method
+***numerical solution of model ODEs
+-Use code to give numerical solution
+-Find out how many bounces after 60s
+-Graph velovity against time, use it to find maximum speed
+-Plot acceleration over time, what is maximum acceleration, does it reach 2g?
+***Numerical differentation
+-Find how far the jumper travels
+***Numerical ingegration
+-Find when a camera should trigger to take a photo
+***Interpolation
+***Rootfinding
+-How far does the jumper come from the water
+-How can bungee rope be altered so the jumper just touches the water.
+
+*** = submittable m file
