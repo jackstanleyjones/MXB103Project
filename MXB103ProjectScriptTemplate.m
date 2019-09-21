@@ -61,14 +61,18 @@ n = 10000;          % Number of subintervals (you decide how many you need)
 % second order taylor method
 [tm, ym, vm, hm, am] = SecOrdTay_bungee(T, n, g, C, K, L);
 
+%RK4 Method
+[trk, yrk, vrk, hrk] = RK4_bungee(T, n, g, C, K, L)
+
 figure(1);
 plot(t, y);
 hold on
 plot(tm, ym)
+plot(trk, yrk)
 xlabel('time (s)');
 ylabel('distance fallen (m)');
 title('Figure 1: Bungee Jump Using Eulers Method vs Second Order Taylor Method');
-legend('Euler', 'Second Order Taylor')
+legend('Euler', 'Second Order Taylor', 'RK4')
 
 %% 5 Analysis
 %
@@ -95,6 +99,8 @@ legend('Euler', 'Second Order Taylor')
 
 figure(2);
 plot(t, vm);
+hold on
+plot(t, vrk)
 xlabel('time (s)');
 ylabel('jumper velocity (m/s)');
 title('Figure 2: Bungee Jump Velocity Over Time (Second Order Taylor Series Modelling)');
@@ -105,9 +111,15 @@ maximum_speed = max(abs(vm))
 % Describe the question, and then answer it.  In this case, you will call
 % a function to numerically differentiate $v$ to find $a$.  Then plot $a$ 
 % versus $t$ and refer to it to answer the question.
-accel = diff(vm)
-%plot(accel)
-%plot(t, am)
+figure(3);
+tayAccel = diff(vm);
+RK4Accel = diff(vrk);
+time = t(1:10000)
+plot(time, tayAccel)
+hold on
+plot(time, RK4Accel)
+xlabel('time (s)'), ylabel('acceleration (m/s/s)')
+legend('Second Order Taylor Series', 'RK4')
 %% 5.4 Distance travelled by the jumper
 %
 % Describe the question, and then answer it.  In this case, you will call
