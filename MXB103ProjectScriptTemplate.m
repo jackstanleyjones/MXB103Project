@@ -141,7 +141,28 @@ legend('Euler', 'Second Order Taylor')
 % Describe the question, and then answer it.  In this case, you will refer
 % to Figure 1 of $y$ versus $t$.
 % 
-% The model produced above as a result of using a higher order modelling method (Second Order Taylor Method) agrees with the company's claim of 10 "bounces" in 60 seconds (as seen in Figure 1). While both models agree on the general behaviour regarding bounce frequency, the Second Order Taylor Series Model should produces a slightly more accurate prediction over time than the Euler Model. This is because, by using a higher order method, the error term in the Taylor model decays by an order of magnitude (tenfold) faster (i.e. it consequently accumulates less error given the same number of iterations). Specifically, the Second Order Taylor Method works by taking the position of the jumper ($y$) and adds the velocity of the jumper for a given time step interval ($h$), same as the Euler Method. However, the Taylor Method also includes the additional acceleration term (velocity derivative) that is scaled by $h$^2/2. In this case the extra term makes the model more robust/ realistic to the reduction in downward acceleration when the bungee rope is in tension (when $y$ > $L$).  The explicit consideration of the bungee rope’s opposition to downward motion logically results in the model coming to a rest/ equilibrium state ever so slightly faster (less “bouncing” as a result of faster periodic amplitude decay) than when it is not included. 
+% The model produced above as a result of using a higher
+% order modelling method (Second Order Taylor Method)
+% agrees with the company's claim of 10 "bounces" in 60 seconds 
+% (as seen in Figure 1). While both models agree on the general behaviour 
+% regarding bounce frequency, the Second Order Taylor Series Model 
+% should produces a slightly more accurate prediction over time than the 
+% Euler Model. This is because, by using a higher order method, the 
+% error term in the Taylor model decays by an order of magnitude (tenfold) 
+% faster (i.e. it consequently accumulates less error given the
+% same number of iterations). Specifically, the Second Order Taylor
+% Method works by taking the position of the jumper ($y$) and 
+% adds the velocity of the jumper for a given time step 
+% interval ($h$), same as the Euler Method. However, the 
+% Taylor Method also includes the additional acceleration 
+% term (velocity derivative) that is scaled by $h$^2/2. 
+% In this case the extra term makes the model more robust/ realistic to 
+% the reduction in downward acceleration when the bungee rope is 
+% in tension (when $y$ > $L$).  The explicit consideration of the bungee 
+% rope’s opposition to downward motion logically results in 
+% the model coming to a rest/ equilibrium state ever so slightly 
+% faster (less “bouncing” as a result of faster periodic amplitude decay) 
+% than when it is not included. 
 %% 5.2 Maximum speed experienced by the jumper
 %
 % Describe the question, and then answer it.  In this case, you will create
@@ -182,6 +203,21 @@ max_accel = max(abs(am))
 %
 % Describe the question, and then answer it.  In this case, you will call
 % a function to numerically integrate $|v|$ to find the distance.
+
+% As we already have values for velocity over time we can use them to
+% calculate distance. By integrating the absolute values of velocity we are
+% given distance using the trapazoidal method. The absolute value must be
+% used as using negate velocity values would result in an incorrect answer.
+% This is because we want the total distance travelled in both directions.
+% Jumpers will travel approximately 286m total over the 60s jump.
+
+ty= abs(vm);
+t0 = 0;
+t60 = 60;
+tx = t0:t60/n:t60;   %n is the number of subintervals declared earlier
+format shortEng;
+distance = trapz(tx,ty)
+
 
 %% 5.5 Automated camera system
 %
