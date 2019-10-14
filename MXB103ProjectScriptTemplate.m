@@ -214,9 +214,8 @@ max_accel = max(abs(am))
 ty= abs(vm);
 t0 = 0;
 t60 = 60;
-tx = t0:t60/n:t60;   %n is the number of subintervals declared earlier
 format shortEng;
-distance = trapz(tx,ty)
+distance = numeric_integration(t0, t60, n, ty)
 
 
 %% 5.5 Automated camera system
