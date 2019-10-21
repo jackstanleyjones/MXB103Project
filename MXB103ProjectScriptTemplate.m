@@ -44,30 +44,72 @@
 %% 3 The model
 %
 % The equation of motion for bungee jumping is
-%%
+%
 % $$\frac{dv}{dt} = g - C|v|v - \max(0,K(y-L))$$
 %
 % Write a paragraph or two about the equation, including where it comes
 % from and what the symbols mean.
 %
-% The equation above models the acceleration of a bungee jumper over time as the derivative of the velocity over time (second derivative of position over time). In other words, the acceleration of the jumper at any point in time can be determined by determining the change in the rate of change of position. Acceleration at any one point in time depends on three main components:
+% The equation above models the acceleration of a bungee jumper over time
+% as the derivative of the velocity over time (second derivative of
+% position over time). In other words, the acceleration of the jumper at
+% any point in time can be determined by determining the change in the rate
+% of change of position. Acceleration at any one point in time depends on
+% three main components:
 % 
-% 1.	There is the constant downward acceleration due to gravity $g$ of 9.8 m/s/s
+% 1.	There is the constant downward acceleration due to gravity $g$ of
+% 9.8 m/s/s
 % 
-% 2.	There is a deceleration (opposition to movement in any direction) due to air resistance who’s magnitude depends on the drag coefficient of the air ($c$), mass of the jumper ($m$) (note that $C$ = $c$ / $m$) as well as the speed of the jumper ($v$). 
+% 2.	There is a deceleration (opposition to movement in any direction)
+% due to air resistance who’s magnitude depends on the drag coefficient of
+% the air ($c$), mass of the jumper ($m$) (note that $C$ = $c$ / $m$) as
+% well as the speed of the jumper ($v$). 
 % 
-% 3.	Finally, the jumper will “bounce” away from the water due to the tension in the bungee cord. Hence, at the maximum amplitude of a bounce (as determined by the length, $L$, and elasticity, $K$, of the bungee cord), the jumper will decelerate in the positive direction, accelerate slightly in the negative direction until the bungee rope becomes slack again and have an upward velocity until they are overcome by the acceleration due to gravity once more. 
+% 3.	Finally, the jumper will “bounce” away from the water due to the
+% tension in the bungee cord. Hence, at the maximum amplitude of a bounce
+% (as determined by the length, $L$, and elasticity, $K$, of the bungee
+% cord), the jumper will decelerate in the positive direction, accelerate
+% slightly in the negative direction until the bungee rope becomes slack
+% again and have an upward velocity until they are overcome by the
+% acceleration due to gravity once more. 
 % 
-% For each “bounce” cycle, some energy is lost to the air resistance, temperature of the bungee cord/ air etc. which causes decay in the amplitude of the bungee bounces until the jumper is left hanging from the bridge. Once a relatively steady state has been achieved like this (acceleration in either direction approaches zero), the jump can be said to be over.
+% For each “bounce” cycle, some energy is lost to the air resistance,
+% temperature of the bungee cord/ air etc. which causes decay in the
+% amplitude of the bungee bounces until the jumper is left hanging from the
+% bridge. Once a relatively steady state has been achieved like this
+% (acceleration in either direction approaches zero), the jump can be said
+% to be over.
   
 %% 3.1 Assumptions and limitations
 %
-% Write a paragraph on the assumptions and limitations on the model,
-% and a paragraph on the limitations on the study you have conducted.
+% Write a paragraph on the assumptions and limitations on the model, and a
+% paragraph on the limitations on the study you have conducted.
 % 
-% The key assumptions made in the following model used are that the jumper does not leave the platform with any initial force and that they weigh exactly 80kg. For example, if the jumper pushed off the platform or jumped up and over the ledge, this would affect the acceleration they experience over the subsequent free-fall period in the first oscillatory period of the jump (acceleration is a summative vector). Additionally, the force experienced by an object is proportional to the product of their mass and acceleration, meaning a heavier jumper will require more force to stop at the extremities of a “bounce”. This will put more stress on the bungee cord and may also result in a larger bounce amplitude overall given the greater inertia of the jumper. If these assumptions are not realised, it may result in higher than expected accelerations and forces experienced throughout a jump that could potentially be unsafe/ harmful to users. It is recommended that the assumed mass of the jumper and allowable stress on the bungee cord have an incorporated factor of safety to mitigate sensitivity to these assumptions the model is based on.
+% The key assumptions made in the following model used are that the jumper
+% does not leave the platform with any initial force and that they weigh
+% exactly 80kg. For example, if the jumper pushed off the platform or
+% jumped up and over the ledge, this would affect the acceleration they
+% experience over the subsequent free-fall period in the first oscillatory
+% period of the jump (acceleration is a summative vector). Additionally,
+% the force experienced by an object is proportional to the product of
+% their mass and acceleration, meaning a heavier jumper will require more
+% force to stop at the extremities of a “bounce”. This will put more stress
+% on the bungee cord and may also result in a larger bounce amplitude
+% overall given the greater inertia of the jumper. If these assumptions are
+% not realised, it may result in higher than expected accelerations and
+% forces experienced throughout a jump that could potentially be unsafe/
+% harmful to users. It is recommended that the assumed mass of the jumper
+% and allowable stress on the bungee cord have an incorporated factor of
+% safety to mitigate sensitivity to these assumptions the model is based
+% on.
 % 
-% This model is also limited to two-dimensional movement in the $y$ direction. It does not account for any “swinging” or external forces such as wind and it is very likely that these external forces will be present to some degree in a real-life scenario. The model is also based on the first 60 seconds of jump for this specific scenario. Movement beyond this period of time has not been accounted for even though there is still residual oscillation in a jumper’s “bouncing”.  
+% This model is also limited to two-dimensional movement in the $y$
+% direction. It does not account for any “swinging” or external forces such
+% as wind and it is very likely that these external forces will be present
+% to some degree in a real-life scenario. The model is also based on the
+% first 60 seconds of jump for this specific scenario. Movement beyond this
+% period of time has not been accounted for even though there is still
+% residual oscillation in a jumper’s “bouncing”.
 
 
 %% 3.2 Parameters
@@ -86,22 +128,27 @@ K = k/m;            % Scaled spring constant
 % How do you formulate the model to solve numerically? (hint: you write it
 % as two equations)
 %
-% The Second Order Taylor Method is more accurate in modelling ODEs than the Euler Method as it uses more terms to model a function over each subinterval. Second Order Taylor Series models take the form:
+% The Second Order Taylor Method is more accurate in modelling ODEs than
+% the Euler Method as it uses more terms to model a function over each
+% subinterval. Second Order Taylor Series models take the form:
 % 
-% $$ y(t + h) = y(t) + h\frac{dy}{dt} + \frac{h^2}{2} \frac{dy^2}{dt^2} + O(h^3)$$
+% $$ y(t + h) = y(t) + h\frac{dy}{dt} + \frac{h^2}{2} \frac{dy^2}{dt^2} +
+% O(h^3)$$
 % 
-% For a given timestep. We can remove the error term $O$ and replace the exact solution $y$ with an approximation $w$ to produce:
+% For a given timestep. We can remove the error term $O$ and replace the
+% exact solution $y$ with an approximation $w$ to produce:
 % 
 % $$ w(t + h) = w + h\frac{dw}{dt} + \frac{h^2}{2} \frac{dw^2}{dt^2} $$
 % 
 % For this situation, $w$ is position ($y$), $\frac{dw}{dt}$ is velocity
-% ($v$) and $\frac{dw^2}{dt^2}$ is acceleration for a time interval of size $h$.
+% ($v$) and $\frac{dw^2}{dt^2}$ is acceleration for a time interval of size
+% $h$.
 % 
 % NOTE that:
 % 
-% $$\frac{dv}{dt} = g - C|v|v - \max(0,K(y-L))$$ 
+% $$\frac{dv}{dt} = g - C|v|v - \max(0,K(y-L))$$
 % 
-% and 
+% and
 % 
 % $$\frac{dy}{dt} = v$$
 
@@ -170,10 +217,12 @@ legend('Euler', 'Second Order Taylor')
 % 
 % As can be seen in Figure 2, the maximum speed of the jumper is achieved
 % at the moment before the first upward bounce (i.e. the last moment of
-% freefall from the inital jump from the platform). At this moment (approximately 3 seconds after the jump) the jumper is
-% travelling at approximately 20.0325m/s. This is logical as the resistive
-% force of the bungee rope has not yet begun to contribute to decay in the
-% bounce amplitude and as such the inertia of the jumper is at its maximum as they have been in uninterrrupted freefall due to gravity. 
+% freefall from the inital jump from the platform). At this moment
+% (approximately 3 seconds after the jump) the jumper is travelling at
+% approximately 20.0325m/s. This is logical as the resistive force of the
+% bungee rope has not yet begun to contribute to decay in the bounce
+% amplitude and as such the inertia of the jumper is at its maximum as they
+% have been in uninterrrupted freefall due to gravity.
 figure(2);
 plot(t, vm);
 %hold on
@@ -191,7 +240,17 @@ fprintf('Maximum speed: %fm/s\n', maximum_speed);
 % a function to numerically differentiate $v$ to find $a$.  Then plot $a$ 
 % versus $t$ and refer to it to answer the question.
 %
-% The maximum acceleration the bungee jumper will experience will occur when the bungee rope stretches and recoils after the initial jump off the platform, as seen in Figure 3. This is because the jumper will be experiencing maximal inertia due to their freefall from gravity upon the first "bounce" and thus a relatively large amount of acceleration in the negative direction will occur (the deceleration occurs over a shorter period than the freefall time and thus requires a larger magnitude) in order to pull the jumper back up. The absolute magnitude of this acceleration is approximately “2 $g$ ” (19.6m/s/s) as the company claims. Specifically, jumpers will experience 18.3949m/s/s at this moment (approximately 5 seconds after the initial jump). 
+% The maximum acceleration the bungee jumper will experience will occur
+% when the bungee rope stretches and recoils after the initial jump off the
+% platform, as seen in Figure 3. This is because the jumper will be
+% experiencing maximal inertia due to their freefall from gravity upon the
+% first "bounce" and thus a relatively large amount of acceleration in the
+% negative direction will occur (the deceleration occurs over a shorter
+% period than the freefall time and thus requires a larger magnitude) in
+% order to pull the jumper back up. The absolute magnitude of this
+% acceleration is approximately “2 $g$ ” (19.6m/s/s) as the company claims.
+% Specifically, jumpers will experience 18.3949m/s/s at this moment
+% (approximately 5 seconds after the initial jump).
 
 figure(3);
 plot(t, am);

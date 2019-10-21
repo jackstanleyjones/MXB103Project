@@ -1,0 +1,371 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>MXB103 Project Group 18:  BUNGEE!</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-10-21"><meta name="DC.source" content="MXB103ProjectScriptTemplate.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>MXB103 Project Group 18:  BUNGEE!</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">1  Introduction test</a></li><li><a href="#2">2  The proposal</a></li><li><a href="#3">3 The model</a></li><li><a href="#5">3.1 Assumptions and limitations</a></li><li><a href="#6">3.2 Parameters</a></li><li><a href="#7">4 The numerical method</a></li><li><a href="#8">4.1 Parameters</a></li><li><a href="#9">4.2 Solution</a></li><li><a href="#10">5 Analysis</a></li><li><a href="#11">5.1 Timing and bounces</a></li><li><a href="#12">5.2 Maximum speed experienced by the jumper</a></li><li><a href="#13">5.3 Maximum acceleration experienced by the jumper</a></li><li><a href="#14">5.4 Distance travelled by the jumper</a></li><li><a href="#15">5.5 Automated camera system</a></li><li><a href="#16">5.6 Water touch option</a></li><li><a href="#17">6 Conclusion</a></li></ul></div><h2 id="1">1  Introduction test</h2><p>As part of Brisbane's "New World City" transformation, the Brisbane City Council is investigating a proposal to allow bungee jumping off the Story Bridge. This report addresses several key questions about the proposal.</p><p>In Section 2 of this report, the proposal and the key questions relating to it are discussed in more detail.  In Section 3, the model ... In Section 4, etc.</p><h2 id="2">2  The proposal</h2><p>What is the proposal exactly? What questions have you been asked to answer? What's your approach to doing this? A few paragraphs should be enough. Finish with a sentence linking to the next section on the model.</p><p>This proposal aims to realistically model the motion of a bungee jumper given the jumping parameters provided by the Brisbane City Council. Specifically, analysis of the distance, speed and acceleration experienced by the jumper must be understood in order to propose how to maximise user experience while maintaining safe levels of force and speed throughout the experience.</p><p>The most important factor in this project is arguably the levels of acceleration experienced at the extremeties of a "bounce". This acceleration must be less than 2 <img src="MXB103ProjectScriptTemplate_eq07585311203459331132.png" alt="$g$" style="width:7px;height:10px;"> not only to ensure the safety of users but to also ensure the bungee cord is able to elastically recover from a user's jump and be reliable over its lifetime. Additionally, velocity and position (both integrals of the acceleration) can be analysed to inform decisions on other company services such as the mid-jump camera and water-touch options they plan to investigate. Numerical methods of approximation and interpolation are easily applied to the equations of motion aforementioned to enable the company to better make these decisions.</p><p>Specifically, the following report uses the Second Order Taylor Series Method in order to model to motion of a person during a bungee jump session. This method has been applied to the equations discussed in section 3 as it is appropriate for solving Ordinary Differential Equations (ODEs) in the time domain.</p><h2 id="3">3 The model</h2><p>The equation of motion for bungee jumping is</p><p><img src="MXB103ProjectScriptTemplate_eq00661610586290158342.png" alt="$$\frac{dv}{dt} = g - C|v|v - \max(0,K(y-L))$$" style="width:227px;height:30px;"></p><p>Write a paragraph or two about the equation, including where it comes from and what the symbols mean.</p><p>The equation above models the acceleration of a bungee jumper over time as the derivative of the velocity over time (second derivative of position over time). In other words, the acceleration of the jumper at any point in time can be determined by determining the change in the rate of change of position. Acceleration at any one point in time depends on three main components:</p><p>1.	There is the constant downward acceleration due to gravity <img src="MXB103ProjectScriptTemplate_eq07585311203459331132.png" alt="$g$" style="width:7px;height:10px;"> of 9.8 m/s/s</p><p>2.	There is a deceleration (opposition to movement in any direction) due to air resistance who&#8217;s magnitude depends on the drag coefficient of the air (<img src="MXB103ProjectScriptTemplate_eq08422257486649890878.png" alt="$c$" style="width:6px;height:7px;">), mass of the jumper (<img src="MXB103ProjectScriptTemplate_eq11319871188381094158.png" alt="$m$" style="width:13px;height:7px;">) (note that <img src="MXB103ProjectScriptTemplate_eq03986222445007418011.png" alt="$C$" style="width:11px;height:11px;"> = <img src="MXB103ProjectScriptTemplate_eq08422257486649890878.png" alt="$c$" style="width:6px;height:7px;"> / <img src="MXB103ProjectScriptTemplate_eq11319871188381094158.png" alt="$m$" style="width:13px;height:7px;">) as well as the speed of the jumper (<img src="MXB103ProjectScriptTemplate_eq03158747792916826732.png" alt="$v$" style="width:7px;height:7px;">).</p><p>3.	Finally, the jumper will &#8220;bounce&#8221; away from the water due to the tension in the bungee cord. Hence, at the maximum amplitude of a bounce (as determined by the length, <img src="MXB103ProjectScriptTemplate_eq11904963258706611165.png" alt="$L$" style="width:10px;height:10px;">, and elasticity, <img src="MXB103ProjectScriptTemplate_eq03845174387838694102.png" alt="$K$" style="width:13px;height:10px;">, of the bungee cord), the jumper will decelerate in the positive direction, accelerate slightly in the negative direction until the bungee rope becomes slack again and have an upward velocity until they are overcome by the acceleration due to gravity once more.</p><p>For each &#8220;bounce&#8221; cycle, some energy is lost to the air resistance, temperature of the bungee cord/ air etc. which causes decay in the amplitude of the bungee bounces until the jumper is left hanging from the bridge. Once a relatively steady state has been achieved like this (acceleration in either direction approaches zero), the jump can be said to be over.</p><h2 id="5">3.1 Assumptions and limitations</h2><p>Write a paragraph on the assumptions and limitations on the model, and a paragraph on the limitations on the study you have conducted.</p><p>The key assumptions made in the following model used are that the jumper does not leave the platform with any initial force and that they weigh exactly 80kg. For example, if the jumper pushed off the platform or jumped up and over the ledge, this would affect the acceleration they experience over the subsequent free-fall period in the first oscillatory period of the jump (acceleration is a summative vector). Additionally, the force experienced by an object is proportional to the product of their mass and acceleration, meaning a heavier jumper will require more force to stop at the extremities of a &#8220;bounce&#8221;. This will put more stress on the bungee cord and may also result in a larger bounce amplitude overall given the greater inertia of the jumper. If these assumptions are not realised, it may result in higher than expected accelerations and forces experienced throughout a jump that could potentially be unsafe/ harmful to users. It is recommended that the assumed mass of the jumper and allowable stress on the bungee cord have an incorporated factor of safety to mitigate sensitivity to these assumptions the model is based on.</p><p>This model is also limited to two-dimensional movement in the <img src="MXB103ProjectScriptTemplate_eq08830444604280721118.png" alt="$y$" style="width:7px;height:10px;"> direction. It does not account for any &#8220;swinging&#8221; or external forces such as wind and it is very likely that these external forces will be present to some degree in a real-life scenario. The model is also based on the first 60 seconds of jump for this specific scenario. Movement beyond this period of time has not been accounted for even though there is still residual oscillation in a jumper&#8217;s &#8220;bouncing&#8221;.</p><h2 id="6">3.2 Parameters</h2><pre class="codeinput">H = 74;             <span class="comment">% Height of jump point (m)</span>
+D = 31;             <span class="comment">% Deck height (m)</span>
+c = 0.9;            <span class="comment">% Drag coefficient (kg/m)</span>
+m = 80;             <span class="comment">% Mass of the jumper (kg)</span>
+L = 25;             <span class="comment">% Length of bungee cord (m)</span>
+k = 90;             <span class="comment">% Spring constant of bungee cord (N/m)</span>
+g = 9.8;            <span class="comment">% Gravitational acceleration (m/s^2)</span>
+C = c/m;            <span class="comment">% Scaled drag coefficient</span>
+K = k/m;            <span class="comment">% Scaled spring constant</span>
+</pre><h2 id="7">4 The numerical method</h2><p>How do you formulate the model to solve numerically? (hint: you write it as two equations)</p><p>The Second Order Taylor Method is more accurate in modelling ODEs than the Euler Method as it uses more terms to model a function over each subinterval. Second Order Taylor Series models take the form:</p><p><img src="MXB103ProjectScriptTemplate_eq07682477202034561687.png" alt="$$ y(t + h) = y(t) + h\frac{dy}{dt} + \frac{h^2}{2} \frac{dy^2}{dt^2} + O(h^3)$$" style="width:254px;height:33px;"></p><p>For a given timestep. We can remove the error term <img src="MXB103ProjectScriptTemplate_eq14346102719673728666.png" alt="$O$" style="width:11px;height:11px;"> and replace the exact solution <img src="MXB103ProjectScriptTemplate_eq08830444604280721118.png" alt="$y$" style="width:7px;height:10px;"> with an approximation <img src="MXB103ProjectScriptTemplate_eq00125694759345388081.png" alt="$w$" style="width:10px;height:7px;"> to produce:</p><p><img src="MXB103ProjectScriptTemplate_eq04883967623264865002.png" alt="$$ w(t + h) = w + h\frac{dw}{dt} + \frac{h^2}{2} \frac{dw^2}{dt^2} $$" style="width:195px;height:33px;"></p><p>For this situation, <img src="MXB103ProjectScriptTemplate_eq00125694759345388081.png" alt="$w$" style="width:10px;height:7px;"> is position (<img src="MXB103ProjectScriptTemplate_eq08830444604280721118.png" alt="$y$" style="width:7px;height:10px;">), <img src="MXB103ProjectScriptTemplate_eq15114116433807309150.png" alt="$\frac{dw}{dt}$" style="width:14px;height:18px;"> is velocity (<img src="MXB103ProjectScriptTemplate_eq03158747792916826732.png" alt="$v$" style="width:7px;height:7px;">) and <img src="MXB103ProjectScriptTemplate_eq16050142043068938591.png" alt="$\frac{dw^2}{dt^2}$" style="width:18px;height:20px;"> is acceleration for a time interval of size <img src="MXB103ProjectScriptTemplate_eq08062630503172331818.png" alt="$h$" style="width:8px;height:11px;">.</p><p>NOTE that:</p><p><img src="MXB103ProjectScriptTemplate_eq00661610586290158342.png" alt="$$\frac{dv}{dt} = g - C|v|v - \max(0,K(y-L))$$" style="width:227px;height:30px;"></p><p>and</p><p><img src="MXB103ProjectScriptTemplate_eq14634665888582546610.png" alt="$$\frac{dy}{dt} = v$$" style="width:44px;height:30px;"></p><h2 id="8">4.1 Parameters</h2><pre class="codeinput">T = 60;             <span class="comment">% Final time in simulation (s)</span>
+n = 10000;          <span class="comment">% Number of subintervals (you decide how many you need)</span>
+</pre><h2 id="9">4.2 Solution</h2><p>The ordinary differential equations are solved using the Second Order Taylor Series Method.</p><pre class="codeinput">[t, y, v, h] = euler_bungee(T, n, g, C, K, L);
+<span class="comment">% (you must change this to a second order or higher method)</span>
+<span class="comment">% second order taylor method</span>
+[tm, ym, vm, hm, am] = SecOrdTay_bungee(T, n, g, C, K, L);
+<span class="comment">%RK4 Method</span>
+<span class="comment">%[trk, yrk, vrk, hrk] = RK4_bungee(T, n, g, C, K, L);</span>
+figure(1);
+plot(t, y, <span class="string">'b'</span>);
+hold <span class="string">on</span>
+plot(tm, ym,<span class="string">'r--'</span>);
+<span class="comment">%plot(trk, yrk,'--');</span>
+xlabel(<span class="string">'time (s)'</span>);
+ylabel(<span class="string">'distance fallen (m)'</span>);
+title(<span class="string">'Figure 1: Bungee Jump Using Eulers Method vs Second Order Taylor Method'</span>);
+legend(<span class="string">'Euler'</span>, <span class="string">'Second Order Taylor'</span>)
+<span class="comment">%legend('Euler', 'Second Order Taylor', 'RK4')</span>
+</pre><img vspace="5" hspace="5" src="MXB103ProjectScriptTemplate_01.png" alt=""> <h2 id="10">5 Analysis</h2><p>In this section, the model predictions are analysed with respect to the key questions being asked about the proposal.</p><h2 id="11">5.1 Timing and bounces</h2><p>Describe the question, and then answer it.  In this case, you will refer to Figure 1 of <img src="MXB103ProjectScriptTemplate_eq08830444604280721118.png" alt="$y$" style="width:7px;height:10px;"> versus <img src="MXB103ProjectScriptTemplate_eq12656067504604335951.png" alt="$t$" style="width:6px;height:10px;">.</p><p>The model produced above as a result of using a higher order modelling method (Second Order Taylor Method) agrees with the company's claim of 10 "bounces" in 60 seconds (as seen in Figure 1). While both models agree on the general behaviour regarding bounce frequency, the Second Order Taylor Series Model should produces a slightly more accurate prediction over time than the Euler Model. This is because, by using a higher order method, the error term in the Taylor model decays by an order of magnitude (tenfold) faster (i.e. it consequently accumulates less error given the same number of iterations). Specifically, the Second Order Taylor Method works by taking the position of the jumper (<img src="MXB103ProjectScriptTemplate_eq08830444604280721118.png" alt="$y$" style="width:7px;height:10px;">) and adds the velocity of the jumper for a given time step interval (<img src="MXB103ProjectScriptTemplate_eq08062630503172331818.png" alt="$h$" style="width:8px;height:11px;">), same as the Euler Method. However, the Taylor Method also includes the additional acceleration term (velocity derivative) that is scaled by <img src="MXB103ProjectScriptTemplate_eq08062630503172331818.png" alt="$h$" style="width:8px;height:11px;">^2/2. In this case the extra term makes the model more robust/ realistic to the reduction in downward acceleration when the bungee rope is in tension (when <img src="MXB103ProjectScriptTemplate_eq08830444604280721118.png" alt="$y$" style="width:7px;height:10px;"> &gt; <img src="MXB103ProjectScriptTemplate_eq11904963258706611165.png" alt="$L$" style="width:10px;height:10px;">).  The explicit consideration of the bungee rope&#8217;s opposition to downward motion logically results in the model coming to a rest/ equilibrium state ever so slightly faster (less &#8220;bouncing&#8221; as a result of faster periodic amplitude decay) than when it is not included.</p><h2 id="12">5.2 Maximum speed experienced by the jumper</h2><p>Describe the question, and then answer it.  In this case, you will create a figure of <img src="MXB103ProjectScriptTemplate_eq03158747792916826732.png" alt="$v$" style="width:7px;height:7px;"> versus <img src="MXB103ProjectScriptTemplate_eq12656067504604335951.png" alt="$t$" style="width:6px;height:10px;"> and refer to it to answer the question.</p><p>As can be seen in Figure 2, the maximum speed of the jumper is achieved at the moment before the first upward bounce (i.e. the last moment of freefall from the inital jump from the platform). At this moment (approximately 3 seconds after the jump) the jumper is travelling at approximately 20.0325m/s. This is logical as the resistive force of the bungee rope has not yet begun to contribute to decay in the bounce amplitude and as such the inertia of the jumper is at its maximum as they have been in uninterrrupted freefall due to gravity.</p><pre class="codeinput">figure(2);
+plot(t, vm);
+<span class="comment">%hold on</span>
+<span class="comment">%plot(t, vrk);</span>
+xlabel(<span class="string">'time (s)'</span>);
+ylabel(<span class="string">'jumper velocity (m/s)'</span>);
+title(<span class="string">'Figure 2: Bungee Jump Velocity Over Time (Taylor Series Modelling)'</span>);
+maximum_speed = max(abs(vm));
+fprintf(<span class="string">'Maximum speed: %fm/s\n'</span>, maximum_speed);
+</pre><pre class="codeoutput">Maximum speed: 20.035890m/s
+</pre><img vspace="5" hspace="5" src="MXB103ProjectScriptTemplate_02.png" alt=""> <h2 id="13">5.3 Maximum acceleration experienced by the jumper</h2><p>Describe the question, and then answer it.  In this case, you will call a function to numerically differentiate <img src="MXB103ProjectScriptTemplate_eq03158747792916826732.png" alt="$v$" style="width:7px;height:7px;"> to find <img src="MXB103ProjectScriptTemplate_eq05508344529756732484.png" alt="$a$" style="width:7px;height:7px;">.  Then plot <img src="MXB103ProjectScriptTemplate_eq05508344529756732484.png" alt="$a$" style="width:7px;height:7px;"> versus <img src="MXB103ProjectScriptTemplate_eq12656067504604335951.png" alt="$t$" style="width:6px;height:10px;"> and refer to it to answer the question.</p><p>The maximum acceleration the bungee jumper will experience will occur when the bungee rope stretches and recoils after the initial jump off the platform, as seen in Figure 3. This is because the jumper will be experiencing maximal inertia due to their freefall from gravity upon the first "bounce" and thus a relatively large amount of acceleration in the negative direction will occur (the deceleration occurs over a shorter period than the freefall time and thus requires a larger magnitude) in order to pull the jumper back up. The absolute magnitude of this acceleration is approximately &#8220;2 <img src="MXB103ProjectScriptTemplate_eq07585311203459331132.png" alt="$g$" style="width:7px;height:10px;"> &#8221; (19.6m/s/s) as the company claims. Specifically, jumpers will experience 18.3949m/s/s at this moment (approximately 5 seconds after the initial jump).</p><pre class="codeinput">figure(3);
+plot(t, am);
+title(<span class="string">'Figure 3: Bungee Jump Acceleration Over Time (Taylor Series Modelling)'</span>);
+xlabel(<span class="string">'time (s)'</span>), ylabel(<span class="string">'acceleration (m/s/s)'</span>)
+
+max_accel = max(abs(am));
+fprintf(<span class="string">'Maximum acceleration: %fm/s/s\n'</span>, max_accel);
+</pre><pre class="codeoutput">Maximum acceleration: 18.394937m/s/s
+</pre><img vspace="5" hspace="5" src="MXB103ProjectScriptTemplate_03.png" alt=""> <h2 id="14">5.4 Distance travelled by the jumper</h2><p>Describe the question, and then answer it.  In this case, you will call a function to numerically integrate <img src="MXB103ProjectScriptTemplate_eq03205349225934293529.png" alt="$|v|$" style="width:13px;height:15px;"> to find the distance.</p><pre class="codeinput"><span class="comment">% As we already have values for velocity over time we can use them to</span>
+<span class="comment">% calculate distance. By integrating the absolute values of velocity we are</span>
+<span class="comment">% given distance using the trapazoidal method. The absolute value must be</span>
+<span class="comment">% used as using negate velocity values would result in an incorrect answer.</span>
+<span class="comment">% This is because we want the total distance travelled in both directions.</span>
+<span class="comment">% Jumpers will travel approximately 286m total over the 60s jump.</span>
+
+ty= abs(vm);
+t0 = 0;
+t60 = 60;
+format <span class="string">shortEng</span>;
+distance = numeric_integration(t0, t60, n, ty);
+fprintf(<span class="string">'Distance travelled: %fm\n'</span>, distance);
+</pre><pre class="codeoutput">Distance travelled: 286.457448m
+</pre><h2 id="15">5.5 Automated camera system</h2><p>Describe the question, and then answer it.  In this case, you will fit an interpolating polynomial through the four points in your solution <img src="MXB103ProjectScriptTemplate_eq08830444604280721118.png" alt="$y$" style="width:7px;height:10px;"> that lie either side of the camera location.  Then use that polynomial to solve for when the jumper passes the camera.</p><h2 id="16">5.6 Water touch option</h2><p>Describe the question, and then answer it.  In this case, you will re-solve the equations with different parameters for <img src="MXB103ProjectScriptTemplate_eq11904963258706611165.png" alt="$L$" style="width:10px;height:10px;"> and <img src="MXB103ProjectScriptTemplate_eq15636846968047188835.png" alt="$k$" style="width:7px;height:11px;">. Experiment to find which values work best for the water touch option, but include only the best combination that you found in the submitted code.</p><h2 id="17">6 Conclusion</h2><p>Conclude your report by summing up your findings and making any recommendations.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% MXB103 Project Group 18:  BUNGEE!
+
+%% 1  Introduction test
+% As part of Brisbane's "New World City" transformation, the Brisbane City
+% Council is investigating a proposal to allow bungee jumping off the
+% Story Bridge. This report addresses several key questions about the
+% proposal.
+%
+% In Section 2 of this report, the proposal and the key questions relating 
+% to it are discussed in more detail.  In Section 3, the model ...
+% In Section 4, etc.
+
+%% 2  The proposal
+% What is the proposal exactly?
+% What questions have you been asked to answer?
+% What's your approach to doing this?
+% A few paragraphs should be enough.
+% Finish with a sentence linking to the next section on the model.
+%
+% This proposal aims to realistically model the motion of a bungee jumper
+% given the jumping parameters provided by the Brisbane City Council.
+% Specifically, analysis of the distance, speed and acceleration
+% experienced by the jumper must be understood in order to propose how to
+% maximise user experience while maintaining safe levels of force and speed
+% throughout the experience. 
+%
+% The most important factor in this project is arguably the levels of
+% acceleration experienced at the extremeties of a "bounce". This
+% acceleration must be less than 2 $g$ not only to ensure the safety of
+% users but to also ensure the bungee cord is able to elastically recover
+% from a user's jump and be reliable over its lifetime. Additionally,
+% velocity and position (both integrals of the acceleration) can be
+% analysed to inform decisions on other company services such as the
+% mid-jump camera and water-touch options they plan to investigate.
+% Numerical methods of approximation and interpolation are easily applied
+% to the equations of motion aforementioned to enable the company to better
+% make these decisions.
+% 
+% Specifically, the following report uses the Second Order Taylor Series
+% Method in order to model to motion of a person during a bungee jump
+% session. This method has been applied to the equations discussed in
+% section 3 as it is appropriate for solving Ordinary Differential
+% Equations (ODEs) in the time domain.
+%% 3 The model
+%
+% The equation of motion for bungee jumping is
+%%
+% $$\frac{dv}{dt} = g - C|v|v - \max(0,K(y-L))$$
+%
+% Write a paragraph or two about the equation, including where it comes
+% from and what the symbols mean.
+%
+% The equation above models the acceleration of a bungee jumper over time as the derivative of the velocity over time (second derivative of position over time). In other words, the acceleration of the jumper at any point in time can be determined by determining the change in the rate of change of position. Acceleration at any one point in time depends on three main components:
+% 
+% 1.	There is the constant downward acceleration due to gravity $g$ of 9.8 m/s/s
+% 
+% 2.	There is a deceleration (opposition to movement in any direction) due to air resistance who’s magnitude depends on the drag coefficient of the air ($c$), mass of the jumper ($m$) (note that $C$ = $c$ / $m$) as well as the speed of the jumper ($v$). 
+% 
+% 3.	Finally, the jumper will “bounce” away from the water due to the tension in the bungee cord. Hence, at the maximum amplitude of a bounce (as determined by the length, $L$, and elasticity, $K$, of the bungee cord), the jumper will decelerate in the positive direction, accelerate slightly in the negative direction until the bungee rope becomes slack again and have an upward velocity until they are overcome by the acceleration due to gravity once more. 
+% 
+% For each “bounce” cycle, some energy is lost to the air resistance, temperature of the bungee cord/ air etc. which causes decay in the amplitude of the bungee bounces until the jumper is left hanging from the bridge. Once a relatively steady state has been achieved like this (acceleration in either direction approaches zero), the jump can be said to be over.
+  
+%% 3.1 Assumptions and limitations
+%
+% Write a paragraph on the assumptions and limitations on the model,
+% and a paragraph on the limitations on the study you have conducted.
+% 
+% The key assumptions made in the following model used are that the jumper does not leave the platform with any initial force and that they weigh exactly 80kg. For example, if the jumper pushed off the platform or jumped up and over the ledge, this would affect the acceleration they experience over the subsequent free-fall period in the first oscillatory period of the jump (acceleration is a summative vector). Additionally, the force experienced by an object is proportional to the product of their mass and acceleration, meaning a heavier jumper will require more force to stop at the extremities of a “bounce”. This will put more stress on the bungee cord and may also result in a larger bounce amplitude overall given the greater inertia of the jumper. If these assumptions are not realised, it may result in higher than expected accelerations and forces experienced throughout a jump that could potentially be unsafe/ harmful to users. It is recommended that the assumed mass of the jumper and allowable stress on the bungee cord have an incorporated factor of safety to mitigate sensitivity to these assumptions the model is based on.
+% 
+% This model is also limited to two-dimensional movement in the $y$ direction. It does not account for any “swinging” or external forces such as wind and it is very likely that these external forces will be present to some degree in a real-life scenario. The model is also based on the first 60 seconds of jump for this specific scenario. Movement beyond this period of time has not been accounted for even though there is still residual oscillation in a jumper’s “bouncing”.  
+
+
+%% 3.2 Parameters
+H = 74;             % Height of jump point (m)
+D = 31;             % Deck height (m)
+c = 0.9;            % Drag coefficient (kg/m)
+m = 80;             % Mass of the jumper (kg)
+L = 25;             % Length of bungee cord (m)
+k = 90;             % Spring constant of bungee cord (N/m)
+g = 9.8;            % Gravitational acceleration (m/s^2)
+C = c/m;            % Scaled drag coefficient
+K = k/m;            % Scaled spring constant
+
+%% 4 The numerical method
+%
+% How do you formulate the model to solve numerically? (hint: you write it
+% as two equations)
+%
+% The Second Order Taylor Method is more accurate in modelling ODEs than the Euler Method as it uses more terms to model a function over each subinterval. Second Order Taylor Series models take the form:
+% 
+% $$ y(t + h) = y(t) + h\frac{dy}{dt} + \frac{h^2}{2} \frac{dy^2}{dt^2} + O(h^3)$$
+% 
+% For a given timestep. We can remove the error term $O$ and replace the exact solution $y$ with an approximation $w$ to produce:
+% 
+% $$ w(t + h) = w + h\frac{dw}{dt} + \frac{h^2}{2} \frac{dw^2}{dt^2} $$
+% 
+% For this situation, $w$ is position ($y$), $\frac{dw}{dt}$ is velocity
+% ($v$) and $\frac{dw^2}{dt^2}$ is acceleration for a time interval of size $h$.
+% 
+% NOTE that:
+% 
+% $$\frac{dv}{dt} = g - C|v|v - \max(0,K(y-L))$$ 
+% 
+% and 
+% 
+% $$\frac{dy}{dt} = v$$
+
+
+%% 4.1 Parameters
+
+T = 60;             % Final time in simulation (s)
+n = 10000;          % Number of subintervals (you decide how many you need)
+
+%% 4.2 Solution
+%
+% The ordinary differential equations are solved using the Second Order Taylor Series Method.
+[t, y, v, h] = euler_bungee(T, n, g, C, K, L);
+% (you must change this to a second order or higher method)
+% second order taylor method
+[tm, ym, vm, hm, am] = SecOrdTay_bungee(T, n, g, C, K, L);
+%RK4 Method
+%[trk, yrk, vrk, hrk] = RK4_bungee(T, n, g, C, K, L);
+figure(1);
+plot(t, y, 'b');
+hold on
+plot(tm, ym,'rREPLACE_WITH_DASH_DASH');
+%plot(trk, yrk,'REPLACE_WITH_DASH_DASH');
+xlabel('time (s)');
+ylabel('distance fallen (m)');
+title('Figure 1: Bungee Jump Using Eulers Method vs Second Order Taylor Method');
+legend('Euler', 'Second Order Taylor')
+%legend('Euler', 'Second Order Taylor', 'RK4')
+
+%% 5 Analysis
+%
+% In this section, the model predictions are analysed with respect to the
+% key questions being asked about the proposal.
+
+%% 5.1 Timing and bounces
+%
+% Describe the question, and then answer it.  In this case, you will refer
+% to Figure 1 of $y$ versus $t$.
+% 
+% The model produced above as a result of using a higher
+% order modelling method (Second Order Taylor Method)
+% agrees with the company's claim of 10 "bounces" in 60 seconds 
+% (as seen in Figure 1). While both models agree on the general behaviour 
+% regarding bounce frequency, the Second Order Taylor Series Model 
+% should produces a slightly more accurate prediction over time than the 
+% Euler Model. This is because, by using a higher order method, the 
+% error term in the Taylor model decays by an order of magnitude (tenfold) 
+% faster (i.e. it consequently accumulates less error given the
+% same number of iterations). Specifically, the Second Order Taylor
+% Method works by taking the position of the jumper ($y$) and 
+% adds the velocity of the jumper for a given time step 
+% interval ($h$), same as the Euler Method. However, the 
+% Taylor Method also includes the additional acceleration 
+% term (velocity derivative) that is scaled by $h$^2/2. 
+% In this case the extra term makes the model more robust/ realistic to 
+% the reduction in downward acceleration when the bungee rope is 
+% in tension (when $y$ > $L$).  The explicit consideration of the bungee 
+% rope’s opposition to downward motion logically results in 
+% the model coming to a rest/ equilibrium state ever so slightly 
+% faster (less “bouncing” as a result of faster periodic amplitude decay) 
+% than when it is not included. 
+%% 5.2 Maximum speed experienced by the jumper
+%
+% Describe the question, and then answer it.  In this case, you will create
+% a figure of $v$ versus $t$ and refer to it to answer the question.
+% 
+% As can be seen in Figure 2, the maximum speed of the jumper is achieved
+% at the moment before the first upward bounce (i.e. the last moment of
+% freefall from the inital jump from the platform). At this moment (approximately 3 seconds after the jump) the jumper is
+% travelling at approximately 20.0325m/s. This is logical as the resistive
+% force of the bungee rope has not yet begun to contribute to decay in the
+% bounce amplitude and as such the inertia of the jumper is at its maximum as they have been in uninterrrupted freefall due to gravity. 
+figure(2);
+plot(t, vm);
+%hold on
+%plot(t, vrk);
+xlabel('time (s)');
+ylabel('jumper velocity (m/s)');
+title('Figure 2: Bungee Jump Velocity Over Time (Taylor Series Modelling)');
+maximum_speed = max(abs(vm));
+fprintf('Maximum speed: %fm/s\n', maximum_speed);
+ 
+
+%% 5.3 Maximum acceleration experienced by the jumper
+%
+% Describe the question, and then answer it.  In this case, you will call
+% a function to numerically differentiate $v$ to find $a$.  Then plot $a$ 
+% versus $t$ and refer to it to answer the question.
+%
+% The maximum acceleration the bungee jumper will experience will occur when the bungee rope stretches and recoils after the initial jump off the platform, as seen in Figure 3. This is because the jumper will be experiencing maximal inertia due to their freefall from gravity upon the first "bounce" and thus a relatively large amount of acceleration in the negative direction will occur (the deceleration occurs over a shorter period than the freefall time and thus requires a larger magnitude) in order to pull the jumper back up. The absolute magnitude of this acceleration is approximately “2 $g$ ” (19.6m/s/s) as the company claims. Specifically, jumpers will experience 18.3949m/s/s at this moment (approximately 5 seconds after the initial jump). 
+
+figure(3);
+plot(t, am);
+title('Figure 3: Bungee Jump Acceleration Over Time (Taylor Series Modelling)');
+xlabel('time (s)'), ylabel('acceleration (m/s/s)')
+
+max_accel = max(abs(am));
+fprintf('Maximum acceleration: %fm/s/s\n', max_accel);
+
+%% 5.4 Distance travelled by the jumper
+%
+% Describe the question, and then answer it.  In this case, you will call
+% a function to numerically integrate $|v|$ to find the distance.
+
+% As we already have values for velocity over time we can use them to
+% calculate distance. By integrating the absolute values of velocity we are
+% given distance using the trapazoidal method. The absolute value must be
+% used as using negate velocity values would result in an incorrect answer.
+% This is because we want the total distance travelled in both directions.
+% Jumpers will travel approximately 286m total over the 60s jump.
+
+ty= abs(vm);
+t0 = 0;
+t60 = 60;
+format shortEng;
+distance = numeric_integration(t0, t60, n, ty);
+fprintf('Distance travelled: %fm\n', distance);
+
+%% 5.5 Automated camera system
+%
+% Describe the question, and then answer it.  In this case, you will
+% fit an interpolating polynomial through the four points in your solution
+% $y$ that lie either side of the camera location.  Then use that
+% polynomial to solve for when the jumper passes the camera.
+
+%% 5.6 Water touch option
+%
+% Describe the question, and then answer it.  In this case, you will
+% re-solve the equations with different parameters for $L$ and $k$.  
+% Experiment to find which values work best for the water touch option, but 
+% include only the best combination that you found in the submitted code.
+
+%% 6 Conclusion
+%
+% Conclude your report by summing up your findings and making any
+% recommendations.
+##### SOURCE END #####
+--></body></html>
