@@ -181,7 +181,8 @@ plot(t, vm);
 xlabel('time (s)');
 ylabel('jumper velocity (m/s)');
 title('Figure 2: Bungee Jump Velocity Over Time (Taylor Series Modelling)');
-maximum_speed = max(abs(vm))
+maximum_speed = max(abs(vm));
+fprintf('Maximum speed: %fm/s\n', maximum_speed);
  
 
 %% 5.3 Maximum acceleration experienced by the jumper
@@ -197,7 +198,8 @@ plot(t, am);
 title('Figure 3: Bungee Jump Acceleration Over Time (Taylor Series Modelling)');
 xlabel('time (s)'), ylabel('acceleration (m/s/s)')
 
-max_accel = max(abs(am))
+max_accel = max(abs(am));
+fprintf('Maximum acceleration: %fm/s/s\n', max_accel);
 
 %% 5.4 Distance travelled by the jumper
 %
@@ -215,8 +217,8 @@ ty= abs(vm);
 t0 = 0;
 t60 = 60;
 format shortEng;
-distance = numeric_integration(t0, t60, n, ty)
-
+distance = numeric_integration(t0, t60, n, ty);
+fprintf('Distance travelled: %fm\n', distance);
 
 %% 5.5 Automated camera system
 %
