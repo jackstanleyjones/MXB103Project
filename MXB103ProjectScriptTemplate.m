@@ -214,7 +214,7 @@ max_accel = max(abs(am))
 ty= abs(vm);
 t0 = 0;
 t60 = 60;
-format shortEng;
+ format shortEng;
 distance = numeric_integration(t0, t60, n, ty)
 
 
@@ -231,6 +231,48 @@ distance = numeric_integration(t0, t60, n, ty)
 % re-solve the equations with different parameters for $L$ and $k$.  
 % Experiment to find which values work best for the water touch option, but 
 % include only the best combination that you found in the submitted code.
+
+orig_dist_from_water = H - max(ym)
+k = 79;
+L = 44;
+K = k/m; 
+[tm, ym, vm, hm, am] = SecOrdTay_bungee(T, n, g, C, K, L);
+% %RK4 Method
+% %[trk, yrk, vrk, hrk] = RK4_bungee(T, n, g, C, K, L);
+% figure(4);
+% hold on
+% plot(tm, ym,'r--');
+% %plot(trk, yrk,'--');
+% xlabel('time (s)');
+% ylabel('distance fallen (m)');
+% title('Figure 1: Bungee Jump Using Eulers Method vs Second Order Taylor Method');
+% %legend('Euler', 'Second Order Taylor', 'RK4')
+new_dist =H - max(ym)
+% 
+% figure(5);
+% plot(t, am);
+% title('Figure 3: Bungee Jump Acceleration Over Time (Taylor Series Modelling)');
+% xlabel('time (s)'), ylabel('acceleration (m/s/s)')
+new_max_accel = max(abs(am))
+% count = 6
+% for k = 1:200
+%     for L = 1:70
+%         K = k/m; 
+%         [tm, ym, vm, hm, am] = SecOrdTay_bungee(T, n, g, C, K, L);
+%         new_dist =H - max(ym);
+%         max_accel = max(abs(am));
+%         if (0 < new_dist && new_dist < 0.5 && max_accel < 19.6)
+%             disp(k)
+%             disp(L)
+%             figure(count);
+%             hold on
+%             plot(tm, ym,'r--');
+%             count = count + 1;
+%             
+%         end
+%     end
+% end
+        
 
 %% 6 Conclusion
 %
