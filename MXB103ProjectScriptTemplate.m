@@ -285,7 +285,24 @@ fprintf('Distance travelled: %fm\n', distance);
 % fit an interpolating polynomial through the four points in your solution
 % $y$ that lie either side of the camera location.  Then use that
 % polynomial to solve for when the jumper passes the camera.
-
+min(find(y>43, 1 )); 
+Y= [y(11),y(12),y(13),y(14)]; 
+X= [t(11),t(12),t(13),t(14)]; 
+T= forward_differences(Y);
+%interpolating values x = -10:0.1:10; 
+C= forward_eval(X,T,x); 
+figure(3); 
+plot(x,C) xlim([1 4]); 
+hold on plot(X,Y,'r*') 
+legend('Newton''s forward difference','data','location','NorthWest') xlabel('distance fallen(m)'); 
+title('Figure 4 - Newton''s forward difference'); 
+f= @(x) lagrange(X,Y,x)-43; % Derrived function form data point
+root = bisection(f,X(1),X(4),100) % getting the root 
+% The y(i) values had to first be recorded as an array and computed using the following formula 
+% y(i),y(i+1) < H-D < y(i+2), y(i+3) 
+% After which the t(i) values following the y(i) values. The interpolating polynomial has been completed by implementing  
+% Newton's forward difference method. While both the y and t values used the lagrange method to fit. 
+% bisection method was then used to find the root. 
 %% 5.6 Water touch option
 %
 % Describe the question, and then answer it.  In this case, you will
