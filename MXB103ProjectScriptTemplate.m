@@ -293,46 +293,40 @@ fprintf('Distance travelled: %fm\n', distance);
 % Experiment to find which values work best for the water touch option, but 
 % include only the best combination that you found in the submitted code.
 
-orig_dist_from_water = H - max(ym)
-k = 79;
-L = 44;
-K = k/m; 
-[tm, ym, vm, hm, am] = SecOrdTay_bungee(T, n, g, C, K, L);
-% %RK4 Method
-% %[trk, yrk, vrk, hrk] = RK4_bungee(T, n, g, C, K, L);
-% figure(4);
-% hold on
-% plot(tm, ym,'r--');
-% %plot(trk, yrk,'--');
-% xlabel('time (s)');
-% ylabel('distance fallen (m)');
-% title('Figure 1: Bungee Jump Using Eulers Method vs Second Order Taylor Method');
-% %legend('Euler', 'Second Order Taylor', 'RK4')
-new_dist =H - max(ym)
-% 
-% figure(5);
-% plot(t, am);
-% title('Figure 3: Bungee Jump Acceleration Over Time (Taylor Series Modelling)');
-% xlabel('time (s)'), ylabel('acceleration (m/s/s)')
-new_max_accel = max(abs(am))
-% count = 6
-% for k = 1:200
-%     for L = 1:70
-%         K = k/m; 
-%         [tm, ym, vm, hm, am] = SecOrdTay_bungee(T, n, g, C, K, L);
-%         new_dist =H - max(ym);
-%         max_accel = max(abs(am));
-%         if (0 < new_dist && new_dist < 0.5 && max_accel < 19.6)
-%             disp(k)
-%             disp(L)
-%             figure(count);
-%             hold on
-%             plot(tm, ym,'r--');
-%             count = count + 1;
-%             
-%         end
-%     end
-% end
+%With the given parameters the jumpers currently comes about 24m from the
+%water before reaching the bottom of their first jump
+
+%We found that we would recieve a result as close as possible to a water
+%touch by adjusting the length of the cord to 44m and adjusting the spring
+%contstant of the bungee cord to 79N/m. The main difficulty was keeping the
+%acceleration under 2g while at the same time keeping the amount of bounces
+%in 60 seconds as similar as possible to the ten it was before. With the
+%chosen parameters the new jump would have the jumper stop approximately
+%25cm from the water. There were no parameters that would allow for the
+%jumper to complete 10 full bounces while staying under 2g. So we
+%compramised with the chosen parameters to have the jumper start but not
+%complete the tenth bounce. This was inline with the request to keep it as
+%close as possible 
+orig_dist_from_water = H - max(ym);
+fprintf('Original distance from water: %fm\n', orig_dist_from_water);
+
+new_k = 79;
+new_L = 44;
+new_K = new_k/m; 
+[new_tm, new_ym, new_vm, new_hm, new_am] = SecOrdTay_bungee(T, n, g, C, new_K, new_L);
+
+figure(4);
+hold on
+plot(new_tm, new_ym,'g');
+xlabel('time (s)');
+ylabel('distance fallen (m)');
+title('Figure 4: Adjusted Water Touch Jump');
+new_dist =H - max(new_ym);
+fprintf('Water Touch Distance from water: %fm\n', new_dist);
+
+new_max_accel = max(abs(new_am));
+fprintf('Water Touch Max Acceleration: %fm\n', new_max_accel);
+
         
 
 %% 6 Conclusion
