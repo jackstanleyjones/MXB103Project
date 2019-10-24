@@ -6,9 +6,10 @@
 % Story Bridge. This report addresses several key questions about the
 % proposal.
 %
-% In Section 2 of this report, the proposal and the key questions relating 
-% to it are discussed in more detail.  In Section 3, the model ...
-% In Section 4, etc.
+% to it are discussed in more detail.  In Section 3, the model for motion
+% is detailed and parameters create. In Section 4, the numerical method for
+% solving the model is detailed. In Section 5, the model predictions are
+% analysed.
 
 %% 2  The proposal
 % What is the proposal exactly?
