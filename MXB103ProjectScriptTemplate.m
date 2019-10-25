@@ -266,7 +266,7 @@ fprintf('Maximum acceleration: %fm/s/s\n', max_accel);
 %
 % Describe the question, and then answer it.  In this case, you will call
 % a function to numerically integrate $|v|$ to find the distance.
-
+%
 % As we already have values for velocity over time we can use them to
 % calculate distance. By integrating the absolute values of velocity we are
 % given distance using the trapazoidal method. The absolute value must be
@@ -315,21 +315,21 @@ fprintf('Root: %f\n', root);
 % re-solve the equations with different parameters for $L$ and $k$.  
 % Experiment to find which values work best for the water touch option, but 
 % include only the best combination that you found in the submitted code.
-
-%With the given parameters the jumpers currently comes about 24m from the
-%water before reaching the bottom of their first jump
-
-%We found that we would recieve a result as close as possible to a water
-%touch by adjusting the length of the cord to 44m and adjusting the spring
-%contstant of the bungee cord to 79N/m. The main difficulty was keeping the
-%acceleration under 2g while at the same time keeping the amount of bounces
-%in 60 seconds as similar as possible to the ten it was before. With the
-%chosen parameters the new jump would have the jumper stop approximately
-%25cm from the water. There were no parameters that would allow for the
-%jumper to complete 10 full bounces while staying under 2g. So we
-%compramised with the chosen parameters to have the jumper start but not
-%complete the tenth bounce. This was inline with the request to keep it as
-%close as possible 
+%
+% With the given parameters the jumpers currently comes about 24m from the
+% water before reaching the bottom of their first jump
+%
+% We found that we would recieve a result as close as possible to a water
+% touch by adjusting the length of the cord to 44m and adjusting the spring
+% contstant of the bungee cord to 79N/m. The main difficulty was keeping
+% the acceleration under 2g while at the same time keeping the amount of
+% bounces in 60 seconds as similar as possible to the ten it was before.
+% With the chosen parameters the new jump would have the jumper stop
+% approximately 25cm from the water. There were no parameters that would
+% allow for the jumper to complete 10 full bounces while staying under 2g.
+% So we compramised with the chosen parameters to have the jumper start but
+% not complete the tenth bounce. This was inline with the request to keep
+% it as close as possible.
 orig_dist_from_water = H - max(ym);
 fprintf('Original distance from water: %fm\n', orig_dist_from_water);
 
@@ -354,17 +354,17 @@ fprintf('Water Touch Max Acceleration: %fm\n', new_max_accel);
 
 %% 6 Conclusion
 %
-%After the analysis of the risk and safety measures, it is possible to
-%organise bungee jump activity at the story bridge by the Brisbane City
-%Council. The ideal participant of the jump is a person who is a weight of
-%80kg that would experience 10 bounces within 60 seconds. The distance
-%travelled by the jumper would be approximately 283m in 60 seconds. This
-%setup should be able to fulfil a participant's need of excitement within
-%safety range. An action camera can be installed to record the whole
-%experience of the jumper, the timer starts after a 3 seconds delay after
-%the jump. An increased length about 41.3m long spring is needed for water
-%touch experience. And to increase the spring constant to 72.95N per meter
-%to ensure a safety bounce back. It will be an optional feature for
-%participants to choose. This is just a brief analysis which external
-%factors such as wind are not included in calculations. A further detailed
-%analysis is required.
+% After the analysis of the risk and safety measures, it is possible to
+% organise bungee jump activity at the story bridge by the Brisbane City
+% Council. The ideal participant of the jump is a person who is a weight of
+% 80kg that would experience 10 bounces within 60 seconds. The distance
+% travelled by the jumper would be approximately 283m in 60 seconds. This
+% setup should be able to fulfil a participant's need of excitement within
+% safety range. An action camera can be installed to record the whole
+% experience of the jumper, the timer starts after a 3 seconds delay after
+% the jump. An increased length about 41.3m long spring is needed for water
+% touch experience. And to increase the spring constant to 72.95N per meter
+% to ensure a safety bounce back. It will be an optional feature for
+% participants to choose. This is just a brief analysis which external
+% factors such as wind are not included in calculations. A further detailed
+% analysis is required.
