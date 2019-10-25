@@ -302,7 +302,8 @@ xlabel('distance fallen(m)');
 title('Figure 4 - Newton''s forward difference');
 hold off;
 f= @(x) lagrange(X,Y,x)-43; % Derrived function form data point
-root = bisection(f,X(1),X(4),100) % getting the root 
+root = bisection(f,X(1),X(4),100); % getting the root 
+fprintf('Root: %f\n', root);
 % The y(i) values had to first be recorded as an array and computed using the following formula 
 % y(i),y(i+1) < H-D < y(i+2), y(i+3) 
 % After which the t(i) values following the y(i) values. The interpolating polynomial has been completed by implementing  
