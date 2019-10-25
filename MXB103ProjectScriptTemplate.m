@@ -6,8 +6,9 @@
 % Story Bridge. This report addresses several key questions about the
 % proposal.
 %
-% to it are discussed in more detail.  In Section 3, the model for motion
-% is detailed and parameters create. In Section 4, the numerical method for
+% In Section 2 of this report, the proposal and the key questions relating
+% to it are discussed in more detail. In Section 3, the model for motion is
+% detailed and parameters create. In Section 4, the numerical method for
 % solving the model is detailed. In Section 5, the model predictions are
 % analysed.
 
@@ -290,13 +291,16 @@ min(find(y>43, 1 ));
 Y= [y(11),y(12),y(13),y(14)]; 
 X= [t(11),t(12),t(13),t(14)]; 
 T= forward_differences(Y);
-%interpolating values x = -10:0.1:10; 
+x = -10:0.1:10; %interpolating values
 C= forward_eval(X,T,x); 
 figure(3); 
-plot(x,C) xlim([1 4]); 
-hold on plot(X,Y,'r*') 
-legend('Newton''s forward difference','data','location','NorthWest') xlabel('distance fallen(m)'); 
-title('Figure 4 - Newton''s forward difference'); 
+plot(x,C); xlim([1 4]); 
+hold on;
+plot(X,Y,'r*');
+legend('Newton''s forward difference','data','location','NorthWest'); 
+xlabel('distance fallen(m)'); 
+title('Figure 4 - Newton''s forward difference');
+hold off;
 f= @(x) lagrange(X,Y,x)-43; % Derrived function form data point
 root = bisection(f,X(1),X(4),100) % getting the root 
 % The y(i) values had to first be recorded as an array and computed using the following formula 
