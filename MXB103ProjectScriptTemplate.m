@@ -358,12 +358,12 @@ fprintf('Water Touch Max Acceleration: %fm\n', new_max_accel);
 %organise bungee jump activity at the story bridge by the Brisbane City
 %Council. The ideal participant of the jump is a person who is a weight of
 %80kg that would experience 10 bounces within 60 seconds. The distance
-%travelled by the jumper would be approximately 283m in 60 seconds. This
+%travelled by the jumper would be approximately 286m in 60 seconds. This
 %setup should be able to fulfil a participant's need of excitement within
 %safety range. An action camera can be installed to record the whole
 %experience of the jumper, the timer starts after a 3 seconds delay after
-%the jump. An increased length about 41.3m long spring is needed for water
-%touch experience. And to increase the spring constant to 72.95N per meter
+%the jump. An increased length about 44m long spring is needed for water
+%touch experience. And to increase the spring constant to 79N per meter
 %to ensure a safety bounce back. It will be an optional feature for
 %participants to choose. This is just a brief analysis which external
 %factors such as wind are not included in calculations. A further detailed
