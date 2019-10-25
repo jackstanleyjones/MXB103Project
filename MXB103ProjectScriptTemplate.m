@@ -335,7 +335,7 @@ fprintf('Original distance from water: %fm\n', orig_dist_from_water);
 new_k = 79;
 new_L = 44;
 new_K = new_k/m; 
-[new_tm, new_ym, new_vm, new_hm, new_am] = SecOrdTay_bungee(T, n, g, C, 79/80, 44);
+[new_tm, new_ym, new_vm, new_hm, new_am] = SecOrdTay_bungee(60, 200, 9.8, 0.9/80, 79/80, 44);
 
 figure(4);
 hold on
