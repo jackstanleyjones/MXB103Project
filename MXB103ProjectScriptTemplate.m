@@ -163,10 +163,10 @@ n = 10000;          % Number of subintervals (you decide how many you need)
 %% 4.2 Solution
 %
 % The ordinary differential equations are solved using the Second Order Taylor Series Method.
-[t, y, v, h] = euler_bungee(60, 200, 9.8, 0.9/80, 90/80, 25);
+[t, y, v, h] = euler_bungee(T, n, g, C, K, L);
 % (you must change this to a second order or higher method)
 % second order taylor method
-[tm, ym, vm, hm, am] = SecOrdTay_bungee(60, 200, 9.8, 0.9/80, 90/80, 25);
+[tm, ym, vm, hm, am] = SecOrdTay_bungee(T, n, g, C, K, L);
 %RK4 Method
 %[trk, yrk, vrk, hrk] = RK4_bungee(T, n, g, C, K, L);
 figure(1);
@@ -336,7 +336,7 @@ fprintf('Original distance from water: %fm\n', orig_dist_from_water);
 new_k = 79;
 new_L = 44;
 new_K = new_k/m; 
-[new_tm, new_ym, new_vm, new_hm, new_am] = SecOrdTay_bungee(60, 200, 9.8, 0.9/80, 79/80, 44);
+[new_tm, new_ym, new_vm, new_hm, new_am] = SecOrdTay_bungee(T, n, g, C, new_K, new_L);
 
 figure(4);
 hold on
